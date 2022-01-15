@@ -6,7 +6,10 @@
                "print",
                 "equals",
                 "less",
-                "plus"
+                "plus",
+                "sub",
+                "div",
+                "mul"
   ],
   "fields": []
 }

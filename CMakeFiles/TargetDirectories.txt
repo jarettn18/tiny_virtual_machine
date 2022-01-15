@@ -1,0 +1,3 @@
+/Users/jarett/CLionProjects/tiny_vm/CMakeFiles/tiny_vm.dir
+/Users/jarett/CLionProjects/tiny_vm/CMakeFiles/edit_cache.dir
+/Users/jarett/CLionProjects/tiny_vm/CMakeFiles/rebuild_cache.dir
