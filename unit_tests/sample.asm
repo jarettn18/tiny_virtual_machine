@@ -3,12 +3,10 @@
 .method $constructor
 
   const	2
-      const	3
-      const	8
-    call Int:sub
-const 0
+    const	3
+    const	5
   call Int:sub
-call Int:mul
+call Int:plus
 call Int:print
 pop
 return 0
