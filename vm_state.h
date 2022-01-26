@@ -21,6 +21,7 @@
  * builtins.h
  */
 #include "vm_core.h"
+#include "logger.h"
 
 /* Code block, a sequence of pointers to functions
  * that implement virtual machine instructions.
@@ -28,11 +29,25 @@
  * rather than an index so that we can create blocks code
  * outside the vm_code_block, which is convenient for
  * creating native methods with trampolines.
+ * Program counter always points at next instruction
+ * word (not currently executing word).
  */
 extern vm_Word vm_code_block[];
 extern vm_addr vm_pc;
 
+/* Fetch word at program counter, and advance
+ * pc to point to next instruction.
+ */
 extern vm_Word vm_fetch_next(void);
+
+
+/* A jump is an adjustment (+/- n instruction words)
+ * to program counter.  A jump of 0 would continue
+ * to next instruction. A jump of -2 would repeat
+ * the jump instruction.
+ */
+extern void vm_relative_jump(int n);
+
 
 /* Execution run state - running or halted
  */
@@ -40,6 +55,7 @@ extern vm_Word vm_fetch_next(void);
 #define VM_HALTED 0
 #define VM_SINGLE_STEP 2
 extern int vm_run_state;
+extern  enum LOG_LEVEL vm_logging;
 
 /* Evaluation stack, separate from activation record
  * stack.  For now we just keep integers as values.
@@ -65,12 +81,13 @@ extern vm_addr vm_fp;   // Frame pointer  (locals and return address are relativ
 extern void vm_frame_push_word(vm_Word val);
 extern vm_Word vm_frame_pop_word();
 extern vm_Word vm_frame_top_word();  // Without popping
-
-/* FIXME:  Add functions for fetch/store relative to frame pointer */
+/*  roll 2: [ob x y] -> [x y ob] */
+extern void vm_roll(int n);
 
 /* Debugging */
 void stack_dump(int n_words);
 extern void dump_constants(void);
+extern char *guess_description(vm_Word w);
 
 /* ---------------- Constant Pool --------------------- */
 /* We keep a table of constants corresponding to

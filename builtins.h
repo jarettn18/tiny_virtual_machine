@@ -67,6 +67,7 @@ extern obj_ref int_literal(char *n);      // token: [0-9]+, e.g., 17
  * similar to Python's isinstance.
  */
 
+extern void assert_is_type(obj_ref thing, class_ref expected);
 
 /* ==============
  * Obj
@@ -262,6 +263,10 @@ extern obj_ref new_int(int n);  // An object reference, not a literal
 extern int str_literal_const(char *s_lit); // Index to constants table
 extern obj_ref new_string(char *s);  // An object reference, not a literal
 
+/* Debugging - health checks */
+extern void class_health_check(class_ref clazz);
 
+/* Purely debugging ... stop when we corrupt a built-in class structure */
+extern void health_check_builtins();
 
 #endif //TINY_VM_BUILTINS_H

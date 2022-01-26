@@ -58,6 +58,20 @@ extern void vm_op_call_native(void);
   */
  extern obj_ref vm_new_obj(class_ref clazz);
 
+ /*  Control flow:
+  * conditional and unconditional jumps
+  * (always relative to program counter)
+  *
+  * Note: Relative jumps must consider that
+  * program counter has already advanced past
+  * end of instruction.  For example, relative jump
+  * of -2 is jump to same jump instruction.
+  *
+  */
+ extern void vm_op_jump();          // unconditional jump
+ extern void vm_op_jump_if();       // conditional jump
+ extern void vm_op_jump_ifnot();    // conditional jump
+
 /*
  * The vm calling convention pushes and
  * pops whole activation records.
@@ -75,12 +89,20 @@ extern void vm_op_enter();  // Currently a no-op
 extern void vm_op_return(); // Expects arity next in code, to pop args
 
 /*
- * Stack and local variable manipulation
+ * Stack  manipulation
  */
-
 extern void vm_op_pop();    // Discard top of operand stack
+extern void vm_op_alloc();  // Allocate empty stack space for local variables
+extern void vm_op_roll();  // Roll suffix of stack
+
+/* Local variables */
 extern void vm_op_store();  // Store into local variable at fp+n
 extern void vm_op_load();   // Load from local variable at fp+n
+
+/* Fields of objects */
+extern void vm_op_load_field();  // Load from field of object
+// store_field n: [value target] -> [], target.fields[n] = value
+extern void vm_op_store_field(); // Store into field of object
 
 
 #endif //TINY_VM_VM_OPS_H
