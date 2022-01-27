@@ -316,10 +316,10 @@ vm_Word method_String_equals[] = {
 
 
 /* The String Class (a singleton) */
-struct  class_struct  the_class_String_struct = {
+struct class_struct  the_class_String_struct = {
         .header = {.class_name="String",
                 .object_size = sizeof(struct obj_String_struct),
-                .super=the_class_Obj},
+                .super=the_class_Obj,
                    .healthy_class_tag = HEALTHY,
                    .n_fields = 0,
                    .object_size = sizeof(struct obj_String_struct),
@@ -752,9 +752,6 @@ int int_literal_const(char *n_lit) {
     obj_ref boxed = new_int(as_int);
     const_index = create_const_value(n_lit, boxed);
     return const_index;
-<<<<<<< HEAD
-}
-=======
 }
 
 void class_health_check(class_ref clazz) {
@@ -769,4 +766,3 @@ void health_check_builtins() {
     class_health_check(the_class_Boolean);
     class_health_check(the_class_Nothing);
 }
->>>>>>> b87c434f2beebfcb4daf8f885f25e61673a1a916
