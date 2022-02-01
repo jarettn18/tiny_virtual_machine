@@ -209,6 +209,7 @@ const class_ref the_class_Obj = &the_class_Obj_struct;
  *    STRING
  *    PRINT
  *    EQUALS
+ *    PLUS
  *    FIXME: (Incomplete for now.)
  * ==================
  */
@@ -314,6 +315,38 @@ vm_Word method_String_equals[] = {
         {.intval = 1}  // consume other
 };
 
+/* String:plus  */
+obj_ref native_String_plus(void ) {
+
+    obj_ref this = vm_fp->obj;
+    assert_is_type(this, the_class_String);
+    obj_String this_str = (obj_String) this;
+    obj_ref other = (vm_fp - 1)->obj;
+    assert_is_type(other, the_class_String);
+    obj_String other_str = (obj_String) other;
+
+    size_t len_str1 = strlen(this_str->text);
+    size_t len_str2 = strlen(other_str->text);
+
+    char *new_str = (char *) malloc(sizeof(char) * (len_str1 + len_str2) + 1);
+    strcat(new_str, this_str->text);
+    strcat(new_str, other_str->text);
+
+    obj_ref ret = new_string(new_str);
+    return ret;
+}
+
+vm_Word method_String_plus[] = {
+        {.instr = vm_op_enter},
+        {.instr = vm_op_load},
+        {.intval = 0},   // this
+        {.instr = vm_op_load},
+        {.intval = -1},  // other
+        {.instr = vm_op_call_native},
+        {.native = native_String_plus},
+        {.instr = vm_op_return},
+        {.intval = 1}  // consume other
+};
 
 /* The String Class (a singleton) */
 struct class_struct  the_class_String_struct = {
@@ -327,7 +360,8 @@ struct class_struct  the_class_String_struct = {
         method_String_constructor,     /* Constructor */
         method_String_string,
         method_String_print,
-        method_String_equals
+        method_String_equals,
+        method_String_plus
 };
 
 class_ref the_class_String = &the_class_String_struct;
