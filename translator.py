@@ -63,7 +63,7 @@ grammar = """
             | lexp "." method "(" args ")" ";"
         
         exp: sum
-            | str
+            | sent
             | bool
             
             
@@ -88,9 +88,12 @@ grammar = """
         bool: "true"        -> ctrue   
             | "false"       -> cfalse    
             | "nothing"        -> cnone
-        str: STRING         ->  cstring
-            | STRING "+" STRING   -> addstring
+            
+        sent: STRING              -> cstring
+            | sent "+" STRING   -> addstring
             | NAME "+" STRING     -> addvarstring
+        
+        
         
         
         %import common.NUMBER
@@ -159,7 +162,7 @@ class CalculateTree(Transformer):
         return data
 
     def addstring(self, this, other):
-        data = (f"{other}\n"
+        data = (f"const {other}\n"
                 f"{this}\n"
                 f"call String:plus")
         return data
@@ -286,8 +289,9 @@ calc = calc_parser.parse
 def main():
     local_vars = {}
     s = "-5 + 4"
-    s = "i: Int = 42 + 13;j: Int = i - 32;j.print();cat: String = \"Nora\";cat.print();"
-    #s = "i: String = \"Hello \";j: String = i + \"World\";j.print();\"hi\".print();"
+    #s = "i: Int = 42 + 13;j: Int = i - 32;j.print();cat: String = \"Nora\";cat.print(); "
+    s = "i: String = \"Hello \";j: String = i + \"World\";j.print();\"hi\".print();"
+    s = "x: String = \"Hello\" + \" World\" + \"hi\";x.print();"
     #s = "i: Bool = true;"
     #s = "i: Int = 42 + 3;"
     x = "j: Int = i - 32;"
