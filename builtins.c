@@ -37,7 +37,7 @@ void assert_is_type(obj_ref thing, class_ref expected) {
         }
         if (clazz == the_class_Obj) {
             break;
-         }
+        }
         clazz = clazz->header.super;
         assert(clazz->header.healthy_class_tag == HEALTHY);
     }
@@ -111,7 +111,7 @@ vm_Word method_tbd_2[] = {
 
 vm_Word method_Obj_constructor[] = {
         {.instr = vm_op_enter},
-         // Nothing to initialize
+        // Nothing to initialize
         {.instr = vm_op_return},
         {.intval = 0}
 };
@@ -209,6 +209,7 @@ const class_ref the_class_Obj = &the_class_Obj_struct;
  *    STRING
  *    PRINT
  *    EQUALS
+ *    PLUS
  *    FIXME: (Incomplete for now.)
  * ==================
  */
@@ -314,10 +315,43 @@ vm_Word method_String_equals[] = {
         {.intval = 1}  // consume other
 };
 
+/* String:plus  */
+obj_ref native_String_plus(void ) {
+
+    obj_ref this = vm_fp->obj;
+    assert_is_type(this, the_class_String);
+    obj_String this_str = (obj_String) this;
+    obj_ref other = (vm_fp - 1)->obj;
+    assert_is_type(other, the_class_String);
+    obj_String other_str = (obj_String) other;
+
+    size_t len_str1 = strlen(this_str->text);
+    size_t len_str2 = strlen(other_str->text);
+
+    char *new_str = (char *) malloc(sizeof(char) * (len_str1 + len_str2) + 1);
+    strcat(new_str, this_str->text);
+    strcat(new_str, other_str->text);
+
+    obj_ref ret = new_string(new_str);
+    return ret;
+}
+
+vm_Word method_String_plus[] = {
+        {.instr = vm_op_enter},
+        {.instr = vm_op_load},
+        {.intval = 0},   // this
+        {.instr = vm_op_load},
+        {.intval = -1},  // other
+        {.instr = vm_op_call_native},
+        {.native = native_String_plus},
+        {.instr = vm_op_return},
+        {.intval = 1}  // consume other
+};
 
 /* The String Class (a singleton) */
-struct  class_struct  the_class_String_struct = {
+struct class_struct  the_class_String_struct = {
         .header = {.class_name="String",
+                //.super=the_class_Obj,
                    .healthy_class_tag = HEALTHY,
                    .n_fields = 0,
                    .object_size = sizeof(struct obj_String_struct),
@@ -325,7 +359,8 @@ struct  class_struct  the_class_String_struct = {
         method_String_constructor,     /* Constructor */
         method_String_string,
         method_String_print,
-        method_String_equals
+        method_String_equals,
+        method_String_plus
 };
 
 class_ref the_class_String = &the_class_String_struct;
@@ -395,10 +430,10 @@ struct  class_struct  the_class_Boolean_struct = {
                    .object_size = sizeof (struct obj_Boolean_struct) },
         .vtable =
                 {
-                 method_Boolean_constructor, // constructor
-                 method_Boolean_string, // STRING
-                 method_Obj_print, // PRINT
-                 method_Obj_equals  // EQUALS
+                        method_Boolean_constructor, // constructor
+                        method_Boolean_string, // STRING
+                        method_Obj_print, // PRINT
+                        method_Obj_equals  // EQUALS
                 }
 };
 
@@ -411,15 +446,15 @@ class_ref the_class_Boolean = &the_class_Boolean_struct;
  */
 struct obj_Boolean_struct lit_false_struct =
         { .header.clazz = &the_class_Boolean_struct,
-          .header.tag = GOOD_OBJ_TAG,
-          .value = 0 };
+                .header.tag = GOOD_OBJ_TAG,
+                .value = 0 };
 
 obj_ref lit_false = (obj_ref) &lit_false_struct;
 
 struct obj_Boolean_struct lit_true_struct =
         { .header.clazz = &the_class_Boolean_struct,
-          .header.tag = GOOD_OBJ_TAG,
-          .value =-1 };
+                .header.tag = GOOD_OBJ_TAG,
+                .value =-1 };
 
 obj_ref lit_true = (obj_ref) &lit_true_struct;
 
@@ -493,7 +528,7 @@ class_ref the_class_Nothing = &the_class_Nothing_struct;
  */
 static struct obj_Nothing_struct nothing_struct =
         { .header.clazz = &the_class_Nothing_struct,
-          .header.tag = GOOD_OBJ_TAG
+                .header.tag = GOOD_OBJ_TAG
         };
 obj_ref nothing = (obj_ref) &nothing_struct;
 
@@ -565,7 +600,7 @@ obj_ref native_Int_equals(void ) {
     assert_is_type(other, the_class_Int);
     obj_Int other_int = (obj_Int) other;
     log_debug("Comparing integer values for equality: %d == %d",
-           this_int->value, other_int->value);
+              this_int->value, other_int->value);
     if (this_int->value == other_int->value) {
         return lit_true;
     } else {
@@ -593,7 +628,7 @@ obj_ref native_Int_less(void ) {
     assert_is_type(other, the_class_Int);
     obj_Int other_int = (obj_Int) other;
     log_debug("Comparing integer values for order: %d < %d",
-           this_int->value, other_int->value);
+              this_int->value, other_int->value);
     if (this_int->value < other_int->value) {
         return lit_true;
     } else {
@@ -619,8 +654,50 @@ obj_ref native_Int_plus(void ) {
     assert_is_type(other, the_class_Int);
     obj_Int other_int = (obj_Int) other;
     log_debug("Adding integer values: %d + %d",
-           this_int->value, other_int->value);
+              this_int->value, other_int->value);
     obj_ref sum = new_int(this_int->value + other_int->value);
+    return sum;
+}
+
+/* Int:plus (new native_method) */
+obj_ref native_Int_sub(void ) {
+    obj_ref this = vm_fp->obj;
+    assert_is_type(this, the_class_Int);
+    obj_Int this_int = (obj_Int) this;
+    obj_ref other = (vm_fp - 1)->obj;
+    assert_is_type(other, the_class_Int);
+    obj_Int other_int = (obj_Int) other;
+    log_debug("Adding integer values: %d + %d",
+              this_int->value, other_int->value);
+    obj_ref sum = new_int(this_int->value - other_int->value);
+    return sum;
+}
+
+/* Int:plus (new native_method) */
+obj_ref native_Int_div(void ) {
+    obj_ref this = vm_fp->obj;
+    assert_is_type(this, the_class_Int);
+    obj_Int this_int = (obj_Int) this;
+    obj_ref other = (vm_fp - 1)->obj;
+    assert_is_type(other, the_class_Int);
+    obj_Int other_int = (obj_Int) other;
+    log_debug("Adding integer values: %d + %d",
+              this_int->value, other_int->value);
+    obj_ref sum = new_int(this_int->value / other_int->value);
+    return sum;
+}
+
+/* Int:plus (new native_method) */
+obj_ref native_Int_mul(void ) {
+    obj_ref this = vm_fp->obj;
+    assert_is_type(this, the_class_Int);
+    obj_Int this_int = (obj_Int) this;
+    obj_ref other = (vm_fp - 1)->obj;
+    assert_is_type(other, the_class_Int);
+    obj_Int other_int = (obj_Int) other;
+    log_debug("Adding integer values: %d + %d",
+              this_int->value, other_int->value);
+    obj_ref sum = new_int(this_int->value * other_int->value);
     return sum;
 }
 
@@ -628,6 +705,30 @@ vm_Word method_Int_plus[] = {
         {.instr = vm_op_enter},
         {.instr = vm_op_call_native},
         {.native = native_Int_plus},
+        {.instr = vm_op_return},
+        {.intval = 1}
+};
+
+vm_Word method_Int_sub[] = {
+        {.instr = vm_op_enter},
+        {.instr = vm_op_call_native},
+        {.native = native_Int_sub},
+        {.instr = vm_op_return},
+        {.intval = 1}
+};
+
+vm_Word method_Int_div[] = {
+        {.instr = vm_op_enter},
+        {.instr = vm_op_call_native},
+        {.native = native_Int_div},
+        {.instr = vm_op_return},
+        {.intval = 1}
+};
+
+vm_Word method_Int_mul[] = {
+        {.instr = vm_op_enter},
+        {.instr = vm_op_call_native},
+        {.native = native_Int_mul},
         {.instr = vm_op_return},
         {.intval = 1}
 };
@@ -647,9 +748,12 @@ struct  class_struct  the_class_Int_struct = {
                 method_Obj_print, // PRINT
                 method_Int_equals,  // EQUALS
                 method_Int_less, // LESS
-                method_Int_plus
+                method_Int_plus,
+                method_Int_sub,
+                method_Int_div,
+                method_Int_mul
         }
- };
+};
 
 class_ref the_class_Int = &the_class_Int_struct;
 

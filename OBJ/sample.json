@@ -1,0 +1,90 @@
+{
+    "class_name": "Sample",
+    "super": "Obj",
+    "imports": [
+        "Obj",
+        "String",
+        "Int"
+    ],
+    "methods": [
+        "$constructor",
+        "string",
+        "print",
+        "equals",
+        "added"
+    ],
+    "fields": [],
+    "n_fields": 0,
+    "n_methods": 5,
+    "n_inherited": 4,
+    "constants": [
+        {
+            "kind": "s",
+            "value": "Scrabble: The game\n"
+        },
+        {
+            "kind": "i",
+            "value": "418"
+        },
+        {
+            "kind": "i",
+            "value": "383"
+        },
+        {
+            "kind": "s",
+            "value": "\n"
+        },
+        {
+            "kind": "s",
+            "value": "That was our best game ever\n"
+        },
+        {
+            "kind": "s",
+            "value": "I added a method!\n"
+        }
+    ],
+    "code": [
+        {
+            "name": "$constructor",
+            "slot": 0,
+            "code": [
+                1,
+                0,
+                2,
+                2,
+                7,
+                1,
+                1,
+                1,
+                2,
+                2,
+                5,
+                2,
+                2,
+                7,
+                1,
+                3,
+                2,
+                2,
+                7,
+                1,
+                4,
+                2,
+                2,
+                7,
+                5,
+                0
+            ]
+        },
+        {
+            "name": "added",
+            "slot": 4,
+            "code": [
+                1,
+                5,
+                5,
+                0
+            ]
+        }
+    ]
+}
