@@ -12,6 +12,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/jarett/CLionProjects/tiny_vm/logger.c" "CMakeFiles/tiny_vm.dir/logger.c.o" "gcc" "CMakeFiles/tiny_vm.dir/logger.c.o.d"
   "/Users/jarett/CLionProjects/tiny_vm/main.c" "CMakeFiles/tiny_vm.dir/main.c.o" "gcc" "CMakeFiles/tiny_vm.dir/main.c.o.d"
   "/Users/jarett/CLionProjects/tiny_vm/vm_code_table.c" "CMakeFiles/tiny_vm.dir/vm_code_table.c.o" "gcc" "CMakeFiles/tiny_vm.dir/vm_code_table.c.o.d"
+  "/Users/jarett/CLionProjects/tiny_vm/vm_core.c" "CMakeFiles/tiny_vm.dir/vm_core.c.o" "gcc" "CMakeFiles/tiny_vm.dir/vm_core.c.o.d"
   "/Users/jarett/CLionProjects/tiny_vm/vm_loader.c" "CMakeFiles/tiny_vm.dir/vm_loader.c.o" "gcc" "CMakeFiles/tiny_vm.dir/vm_loader.c.o.d"
   "/Users/jarett/CLionProjects/tiny_vm/vm_ops.c" "CMakeFiles/tiny_vm.dir/vm_ops.c.o" "gcc" "CMakeFiles/tiny_vm.dir/vm_ops.c.o.d"
   "/Users/jarett/CLionProjects/tiny_vm/vm_state.c" "CMakeFiles/tiny_vm.dir/vm_state.c.o" "gcc" "CMakeFiles/tiny_vm.dir/vm_state.c.o.d"

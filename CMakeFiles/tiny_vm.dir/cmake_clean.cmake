@@ -7,14 +7,16 @@ file(REMOVE_RECURSE
   "CMakeFiles/tiny_vm.dir/main.c.o.d"
   "CMakeFiles/tiny_vm.dir/vm_code_table.c.o"
   "CMakeFiles/tiny_vm.dir/vm_code_table.c.o.d"
+  "CMakeFiles/tiny_vm.dir/vm_core.c.o"
+  "CMakeFiles/tiny_vm.dir/vm_core.c.o.d"
   "CMakeFiles/tiny_vm.dir/vm_loader.c.o"
   "CMakeFiles/tiny_vm.dir/vm_loader.c.o.d"
   "CMakeFiles/tiny_vm.dir/vm_ops.c.o"
   "CMakeFiles/tiny_vm.dir/vm_ops.c.o.d"
   "CMakeFiles/tiny_vm.dir/vm_state.c.o"
   "CMakeFiles/tiny_vm.dir/vm_state.c.o.d"
-  "tiny_vm"
-  "tiny_vm.pdb"
+  "bin/tiny_vm"
+  "bin/tiny_vm.pdb"
   "vm_code_table.c"
 )
 

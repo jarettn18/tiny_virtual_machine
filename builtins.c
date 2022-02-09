@@ -351,8 +351,7 @@ vm_Word method_String_plus[] = {
 /* The String Class (a singleton) */
 struct class_struct  the_class_String_struct = {
         .header = {.class_name="String",
-                .object_size = sizeof(struct obj_String_struct),
-                .super=the_class_Obj,
+                //.super=the_class_Obj,
                    .healthy_class_tag = HEALTHY,
                    .n_fields = 0,
                    .object_size = sizeof(struct obj_String_struct),

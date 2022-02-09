@@ -106,4 +106,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/tiny_vm.dir/DependInfo.cmake"
+  "CMakeFiles/test_roll.dir/DependInfo.cmake"
   )

@@ -63,7 +63,7 @@ grammar = """
             | lexp "." method "(" args ")" ";"
         
         exp: sum
-            | sent
+            | //sent
             | bool
             
             
@@ -76,22 +76,24 @@ grammar = """
             | product "/" atom  -> div
     
         ?atom: NUMBER           -> number
+             | STRING           -> cstring
              | "-" atom         -> neg
              | NAME             -> var
              | "(" sum ")"
              
         lexp: NAME
             | STRING
-        typedecl: ":" NAME
+        typedecl: ":" NAME      -> add_typedecl
         args: NAME*
         method: NAME
         bool: "true"        -> ctrue   
             | "false"       -> cfalse    
             | "nothing"        -> cnone
             
-        sent: STRING              -> cstring
-            | sent "+" STRING   -> addstring
-            | NAME "+" STRING     -> addvarstring
+       // sent: str              -> cstring
+         //   | sent "+" str   -> addstring
+            
+        //str: STRING         -> cstring           
         
         
         
@@ -135,6 +137,7 @@ class CalculateTree(Transformer):
 
     def __init__(self):
         self.vars = {}
+        self.stack = []
 
     def init_var(self, var):
         if var not in list(self.vars.keys()):
@@ -154,10 +157,16 @@ class CalculateTree(Transformer):
                 f"store {lexp}")
         return data
 
+    def add_typedecl(self,this):
+        print(this)
+        self.stack.append(this)
+        return this
+
     def add(self, this, other):
+        type = self.stack.pop()
         data = (f"{other}\n"
                 f"{this}\n"
-                f"call Int:plus")
+                f"call {type}:plus")
 
         return data
 
@@ -242,12 +251,13 @@ class vis(visitors.Visitor_Recursive):
 
         if tree.data == "lexp":
             if tree.children[0].value not in self.var_table and tree.children[0].type == "NAME":
-                self.var_table[tree.children[0].value] = "added"
+                self.var_table[tree.children[0].value] = "Added"
             self.stack.append(tree.children[0].value)
 
     def typedecl(self, tree):
         if tree.data == "typedecl":
             lexp = self.stack.pop()
+            print(f"Typedecl of {lexp} is {tree.children[0].value}")
             self.var_table[lexp] = tree.children[0].value
             self.stack.append(lexp)
 
@@ -290,8 +300,8 @@ def main():
     local_vars = {}
     s = "-5 + 4"
     #s = "i: Int = 42 + 13;j: Int = i - 32;j.print();cat: String = \"Nora\";cat.print(); "
-    s = "i: String = \"Hello \";j: String = i + \"World\";j.print();\"hi\".print();"
-    s = "x: String = \"Hello\" + \" World\" + \"hi\";x.print();"
+    #s = "i: String = \"Hello \";j: String = i + \"World\";j.print();\"hi\".print();"
+    s = "x: Int = 12;j: Int = x + 42;x.print();"
     #s = "i: Bool = true;"
     #s = "i: Int = 42 + 3;"
     x = "j: Int = i - 32;"

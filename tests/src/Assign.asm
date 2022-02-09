@@ -1,8 +1,7 @@
 .class Assign:Obj
 
 .method $constructor
-.local i
-.local j
+.local i, j
     const 13
     const 42
     call Int:plus

@@ -1,7 +1,7 @@
 
 /**
  * GENERATED CODE, DO NOT EDIT
- * Generated 2022-01-14 02:51:34.242564 by build_bytecode_table.py
+ * Generated 2022-01-31 23:55:18.757809 by build_bytecode_table.py
  * 
  * Integer encoding of VM operations ---
  * Map those integer encodings to function pointers (for executing)
@@ -19,8 +19,15 @@ op_tbl_entry vm_op_bytecodes[] = {
 	 { "return", vm_op_return, 1 }, //5  Return from method, reclaiming locals
 	 { "new", vm_op_new, 1 }, //6  Allocate a new object instance
 	 { "pop", vm_op_pop, 0 }, //7  Discard top of stack
-	 { "load", vm_op_load, 1 }, //8  Load (push) a local variable onto stack
-	 { "store", vm_op_store, 1 }, //9  Store (pop) top of stack to local variable
+	 { "alloc", vm_op_alloc, 1 }, //8  Allocate stack space for locals
+	 { "load", vm_op_load, 1 }, //9  Load (push) a local variable onto stack
+	 { "store", vm_op_store, 1 }, //10  Store (pop) top of stack to local variable
+	 { "load_field", vm_op_load_field, 1 }, //11  Load from object field
+	 { "store_field", vm_op_store_field, 1 }, //12  Store to object field
+	 { "roll", vm_op_roll, 1 }, //13  [obj arg1 ... argn] -> [arg1 ... argn obj]
+	 { "jump", vm_op_jump, 1 }, //14  Unconditional relative jump
+	 { "jump_if", vm_op_jump_if, 1 }, //15  Conditional relative jump, if true
+	 { "jump_ifnot", vm_op_jump_ifnot, 1 }, //16  Conditional relative jump, if false
 
     { 0, 0, 0}  // SENTRY
 };

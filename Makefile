@@ -129,12 +129,26 @@ tiny_vm/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiny_vm.dir/build.make CMakeFiles/tiny_vm.dir/build
 .PHONY : tiny_vm/fast
 
+#=============================================================================
+# Target rules for targets named test_roll
+
+# Build rule for target.
+test_roll: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_roll
+.PHONY : test_roll
+
+# fast build rule for target.
+test_roll/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_roll.dir/build.make CMakeFiles/test_roll.dir/build
+.PHONY : test_roll/fast
+
 builtins.o: builtins.c.o
 .PHONY : builtins.o
 
 # target to build an object file
 builtins.c.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiny_vm.dir/build.make CMakeFiles/tiny_vm.dir/builtins.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_roll.dir/build.make CMakeFiles/test_roll.dir/builtins.c.o
 .PHONY : builtins.c.o
 
 builtins.i: builtins.c.i
@@ -143,6 +157,7 @@ builtins.i: builtins.c.i
 # target to preprocess a source file
 builtins.c.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiny_vm.dir/build.make CMakeFiles/tiny_vm.dir/builtins.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_roll.dir/build.make CMakeFiles/test_roll.dir/builtins.c.i
 .PHONY : builtins.c.i
 
 builtins.s: builtins.c.s
@@ -151,6 +166,7 @@ builtins.s: builtins.c.s
 # target to generate assembly for a file
 builtins.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiny_vm.dir/build.make CMakeFiles/tiny_vm.dir/builtins.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_roll.dir/build.make CMakeFiles/test_roll.dir/builtins.c.s
 .PHONY : builtins.c.s
 
 logger.o: logger.c.o
@@ -159,6 +175,7 @@ logger.o: logger.c.o
 # target to build an object file
 logger.c.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiny_vm.dir/build.make CMakeFiles/tiny_vm.dir/logger.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_roll.dir/build.make CMakeFiles/test_roll.dir/logger.c.o
 .PHONY : logger.c.o
 
 logger.i: logger.c.i
@@ -167,6 +184,7 @@ logger.i: logger.c.i
 # target to preprocess a source file
 logger.c.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiny_vm.dir/build.make CMakeFiles/tiny_vm.dir/logger.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_roll.dir/build.make CMakeFiles/test_roll.dir/logger.c.i
 .PHONY : logger.c.i
 
 logger.s: logger.c.s
@@ -175,6 +193,7 @@ logger.s: logger.c.s
 # target to generate assembly for a file
 logger.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiny_vm.dir/build.make CMakeFiles/tiny_vm.dir/logger.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_roll.dir/build.make CMakeFiles/test_roll.dir/logger.c.s
 .PHONY : logger.c.s
 
 main.o: main.c.o
@@ -201,12 +220,37 @@ main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiny_vm.dir/build.make CMakeFiles/tiny_vm.dir/main.c.s
 .PHONY : main.c.s
 
+unit_tests/test_roll.o: unit_tests/test_roll.c.o
+.PHONY : unit_tests/test_roll.o
+
+# target to build an object file
+unit_tests/test_roll.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_roll.dir/build.make CMakeFiles/test_roll.dir/unit_tests/test_roll.c.o
+.PHONY : unit_tests/test_roll.c.o
+
+unit_tests/test_roll.i: unit_tests/test_roll.c.i
+.PHONY : unit_tests/test_roll.i
+
+# target to preprocess a source file
+unit_tests/test_roll.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_roll.dir/build.make CMakeFiles/test_roll.dir/unit_tests/test_roll.c.i
+.PHONY : unit_tests/test_roll.c.i
+
+unit_tests/test_roll.s: unit_tests/test_roll.c.s
+.PHONY : unit_tests/test_roll.s
+
+# target to generate assembly for a file
+unit_tests/test_roll.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_roll.dir/build.make CMakeFiles/test_roll.dir/unit_tests/test_roll.c.s
+.PHONY : unit_tests/test_roll.c.s
+
 vm_code_table.o: vm_code_table.c.o
 .PHONY : vm_code_table.o
 
 # target to build an object file
 vm_code_table.c.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiny_vm.dir/build.make CMakeFiles/tiny_vm.dir/vm_code_table.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_roll.dir/build.make CMakeFiles/test_roll.dir/vm_code_table.c.o
 .PHONY : vm_code_table.c.o
 
 vm_code_table.i: vm_code_table.c.i
@@ -215,6 +259,7 @@ vm_code_table.i: vm_code_table.c.i
 # target to preprocess a source file
 vm_code_table.c.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiny_vm.dir/build.make CMakeFiles/tiny_vm.dir/vm_code_table.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_roll.dir/build.make CMakeFiles/test_roll.dir/vm_code_table.c.i
 .PHONY : vm_code_table.c.i
 
 vm_code_table.s: vm_code_table.c.s
@@ -223,7 +268,35 @@ vm_code_table.s: vm_code_table.c.s
 # target to generate assembly for a file
 vm_code_table.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiny_vm.dir/build.make CMakeFiles/tiny_vm.dir/vm_code_table.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_roll.dir/build.make CMakeFiles/test_roll.dir/vm_code_table.c.s
 .PHONY : vm_code_table.c.s
+
+vm_core.o: vm_core.c.o
+.PHONY : vm_core.o
+
+# target to build an object file
+vm_core.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiny_vm.dir/build.make CMakeFiles/tiny_vm.dir/vm_core.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_roll.dir/build.make CMakeFiles/test_roll.dir/vm_core.c.o
+.PHONY : vm_core.c.o
+
+vm_core.i: vm_core.c.i
+.PHONY : vm_core.i
+
+# target to preprocess a source file
+vm_core.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiny_vm.dir/build.make CMakeFiles/tiny_vm.dir/vm_core.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_roll.dir/build.make CMakeFiles/test_roll.dir/vm_core.c.i
+.PHONY : vm_core.c.i
+
+vm_core.s: vm_core.c.s
+.PHONY : vm_core.s
+
+# target to generate assembly for a file
+vm_core.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiny_vm.dir/build.make CMakeFiles/tiny_vm.dir/vm_core.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_roll.dir/build.make CMakeFiles/test_roll.dir/vm_core.c.s
+.PHONY : vm_core.c.s
 
 vm_loader.o: vm_loader.c.o
 .PHONY : vm_loader.o
@@ -255,6 +328,7 @@ vm_ops.o: vm_ops.c.o
 # target to build an object file
 vm_ops.c.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiny_vm.dir/build.make CMakeFiles/tiny_vm.dir/vm_ops.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_roll.dir/build.make CMakeFiles/test_roll.dir/vm_ops.c.o
 .PHONY : vm_ops.c.o
 
 vm_ops.i: vm_ops.c.i
@@ -263,6 +337,7 @@ vm_ops.i: vm_ops.c.i
 # target to preprocess a source file
 vm_ops.c.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiny_vm.dir/build.make CMakeFiles/tiny_vm.dir/vm_ops.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_roll.dir/build.make CMakeFiles/test_roll.dir/vm_ops.c.i
 .PHONY : vm_ops.c.i
 
 vm_ops.s: vm_ops.c.s
@@ -271,6 +346,7 @@ vm_ops.s: vm_ops.c.s
 # target to generate assembly for a file
 vm_ops.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiny_vm.dir/build.make CMakeFiles/tiny_vm.dir/vm_ops.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_roll.dir/build.make CMakeFiles/test_roll.dir/vm_ops.c.s
 .PHONY : vm_ops.c.s
 
 vm_state.o: vm_state.c.o
@@ -279,6 +355,7 @@ vm_state.o: vm_state.c.o
 # target to build an object file
 vm_state.c.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiny_vm.dir/build.make CMakeFiles/tiny_vm.dir/vm_state.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_roll.dir/build.make CMakeFiles/test_roll.dir/vm_state.c.o
 .PHONY : vm_state.c.o
 
 vm_state.i: vm_state.c.i
@@ -287,6 +364,7 @@ vm_state.i: vm_state.c.i
 # target to preprocess a source file
 vm_state.c.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiny_vm.dir/build.make CMakeFiles/tiny_vm.dir/vm_state.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_roll.dir/build.make CMakeFiles/test_roll.dir/vm_state.c.i
 .PHONY : vm_state.c.i
 
 vm_state.s: vm_state.c.s
@@ -295,6 +373,7 @@ vm_state.s: vm_state.c.s
 # target to generate assembly for a file
 vm_state.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tiny_vm.dir/build.make CMakeFiles/tiny_vm.dir/vm_state.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_roll.dir/build.make CMakeFiles/test_roll.dir/vm_state.c.s
 .PHONY : vm_state.c.s
 
 # Help Target
@@ -305,6 +384,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... test_roll"
 	@echo "... tiny_vm"
 	@echo "... builtins.o"
 	@echo "... builtins.i"
@@ -315,9 +395,15 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... unit_tests/test_roll.o"
+	@echo "... unit_tests/test_roll.i"
+	@echo "... unit_tests/test_roll.s"
 	@echo "... vm_code_table.o"
 	@echo "... vm_code_table.i"
 	@echo "... vm_code_table.s"
+	@echo "... vm_core.o"
+	@echo "... vm_core.i"
+	@echo "... vm_core.s"
 	@echo "... vm_loader.o"
 	@echo "... vm_loader.i"
 	@echo "... vm_loader.s"

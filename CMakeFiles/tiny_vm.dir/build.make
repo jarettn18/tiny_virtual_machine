@@ -145,10 +145,24 @@ CMakeFiles/tiny_vm.dir/builtins.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/tiny_vm.dir/builtins.c.s"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/jarett/CLionProjects/tiny_vm/builtins.c -o CMakeFiles/tiny_vm.dir/builtins.c.s
 
+CMakeFiles/tiny_vm.dir/vm_core.c.o: CMakeFiles/tiny_vm.dir/flags.make
+CMakeFiles/tiny_vm.dir/vm_core.c.o: vm_core.c
+CMakeFiles/tiny_vm.dir/vm_core.c.o: CMakeFiles/tiny_vm.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jarett/CLionProjects/tiny_vm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/tiny_vm.dir/vm_core.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tiny_vm.dir/vm_core.c.o -MF CMakeFiles/tiny_vm.dir/vm_core.c.o.d -o CMakeFiles/tiny_vm.dir/vm_core.c.o -c /Users/jarett/CLionProjects/tiny_vm/vm_core.c
+
+CMakeFiles/tiny_vm.dir/vm_core.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/tiny_vm.dir/vm_core.c.i"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/jarett/CLionProjects/tiny_vm/vm_core.c > CMakeFiles/tiny_vm.dir/vm_core.c.i
+
+CMakeFiles/tiny_vm.dir/vm_core.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/tiny_vm.dir/vm_core.c.s"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/jarett/CLionProjects/tiny_vm/vm_core.c -o CMakeFiles/tiny_vm.dir/vm_core.c.s
+
 CMakeFiles/tiny_vm.dir/vm_loader.c.o: CMakeFiles/tiny_vm.dir/flags.make
 CMakeFiles/tiny_vm.dir/vm_loader.c.o: vm_loader.c
 CMakeFiles/tiny_vm.dir/vm_loader.c.o: CMakeFiles/tiny_vm.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jarett/CLionProjects/tiny_vm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/tiny_vm.dir/vm_loader.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jarett/CLionProjects/tiny_vm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/tiny_vm.dir/vm_loader.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tiny_vm.dir/vm_loader.c.o -MF CMakeFiles/tiny_vm.dir/vm_loader.c.o.d -o CMakeFiles/tiny_vm.dir/vm_loader.c.o -c /Users/jarett/CLionProjects/tiny_vm/vm_loader.c
 
 CMakeFiles/tiny_vm.dir/vm_loader.c.i: cmake_force
@@ -162,7 +176,7 @@ CMakeFiles/tiny_vm.dir/vm_loader.c.s: cmake_force
 CMakeFiles/tiny_vm.dir/logger.c.o: CMakeFiles/tiny_vm.dir/flags.make
 CMakeFiles/tiny_vm.dir/logger.c.o: logger.c
 CMakeFiles/tiny_vm.dir/logger.c.o: CMakeFiles/tiny_vm.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jarett/CLionProjects/tiny_vm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/tiny_vm.dir/logger.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jarett/CLionProjects/tiny_vm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/tiny_vm.dir/logger.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/tiny_vm.dir/logger.c.o -MF CMakeFiles/tiny_vm.dir/logger.c.o.d -o CMakeFiles/tiny_vm.dir/logger.c.o -c /Users/jarett/CLionProjects/tiny_vm/logger.c
 
 CMakeFiles/tiny_vm.dir/logger.c.i: cmake_force
@@ -180,27 +194,29 @@ tiny_vm_OBJECTS = \
 "CMakeFiles/tiny_vm.dir/vm_ops.c.o" \
 "CMakeFiles/tiny_vm.dir/vm_code_table.c.o" \
 "CMakeFiles/tiny_vm.dir/builtins.c.o" \
+"CMakeFiles/tiny_vm.dir/vm_core.c.o" \
 "CMakeFiles/tiny_vm.dir/vm_loader.c.o" \
 "CMakeFiles/tiny_vm.dir/logger.c.o"
 
 # External object files for target tiny_vm
 tiny_vm_EXTERNAL_OBJECTS =
 
-tiny_vm: CMakeFiles/tiny_vm.dir/main.c.o
-tiny_vm: CMakeFiles/tiny_vm.dir/vm_state.c.o
-tiny_vm: CMakeFiles/tiny_vm.dir/vm_ops.c.o
-tiny_vm: CMakeFiles/tiny_vm.dir/vm_code_table.c.o
-tiny_vm: CMakeFiles/tiny_vm.dir/builtins.c.o
-tiny_vm: CMakeFiles/tiny_vm.dir/vm_loader.c.o
-tiny_vm: CMakeFiles/tiny_vm.dir/logger.c.o
-tiny_vm: CMakeFiles/tiny_vm.dir/build.make
-tiny_vm: /usr/local/Cellar/cjson/1.7.15/lib/libcjson.1.7.15.dylib
-tiny_vm: CMakeFiles/tiny_vm.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/jarett/CLionProjects/tiny_vm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking C executable tiny_vm"
+bin/tiny_vm: CMakeFiles/tiny_vm.dir/main.c.o
+bin/tiny_vm: CMakeFiles/tiny_vm.dir/vm_state.c.o
+bin/tiny_vm: CMakeFiles/tiny_vm.dir/vm_ops.c.o
+bin/tiny_vm: CMakeFiles/tiny_vm.dir/vm_code_table.c.o
+bin/tiny_vm: CMakeFiles/tiny_vm.dir/builtins.c.o
+bin/tiny_vm: CMakeFiles/tiny_vm.dir/vm_core.c.o
+bin/tiny_vm: CMakeFiles/tiny_vm.dir/vm_loader.c.o
+bin/tiny_vm: CMakeFiles/tiny_vm.dir/logger.c.o
+bin/tiny_vm: CMakeFiles/tiny_vm.dir/build.make
+bin/tiny_vm: /usr/local/Cellar/cjson/1.7.15/lib/libcjson.1.7.15.dylib
+bin/tiny_vm: CMakeFiles/tiny_vm.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/jarett/CLionProjects/tiny_vm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking C executable bin/tiny_vm"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/tiny_vm.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-CMakeFiles/tiny_vm.dir/build: tiny_vm
+CMakeFiles/tiny_vm.dir/build: bin/tiny_vm
 .PHONY : CMakeFiles/tiny_vm.dir/build
 
 CMakeFiles/tiny_vm.dir/clean:

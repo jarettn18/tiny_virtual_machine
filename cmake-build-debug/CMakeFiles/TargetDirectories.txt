@@ -1,3 +1,4 @@
 /Users/jarett/CLionProjects/tiny_vm/cmake-build-debug/CMakeFiles/rebuild_cache.dir
 /Users/jarett/CLionProjects/tiny_vm/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/jarett/CLionProjects/tiny_vm/cmake-build-debug/CMakeFiles/test_roll.dir
 /Users/jarett/CLionProjects/tiny_vm/cmake-build-debug/CMakeFiles/tiny_vm.dir
