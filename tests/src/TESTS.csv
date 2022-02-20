@@ -7,3 +7,9 @@ Roleur,run
 Assign,run
 Cat,run
 Testing,run
+NewThis,assemble
+UseThis,run
+IsADuck,assemble
+DuckCheck,run
+RecursiveLoadSuper,run
+RecursiveLoadSuperDuper,run
