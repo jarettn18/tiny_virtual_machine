@@ -13,3 +13,4 @@ IsADuck,assemble
 DuckCheck,run
 RecursiveLoadSuper,run
 RecursiveLoadSuperDuper,run
+MultiMethodJumps,run
