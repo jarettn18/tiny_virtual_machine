@@ -17,6 +17,7 @@ Writing your own unit tests:
     -add a .txt file to tests/expect
     -add file/type of testing to src/TESTS.csv
 """
+
 grammar2 = """
         ?start: stmt*               
         
@@ -49,13 +50,6 @@ grammar2 = """
         %ignore WS_INLINE
         """
 
-practice_grammar = """
-                    stmt -> Lexpr typedecl "=" exp ";"
-                    Lexpr -> IDENT
-                    Typedecl -> ":" IDENT
-                    
-                    ?exp: NUMBER    -> number
-                    """
 grammar = """
         ?start: stmt*               
         
@@ -97,12 +91,11 @@ grammar = """
         
         
         
-        
         %import common.NUMBER
         %import common.CNAME -> NAME
         %import common.WS_INLINE
         %import common.ESCAPED_STRING -> STRING
-
+    
         %ignore WS_INLINE
         """
 calc_grammar = """
@@ -251,7 +244,7 @@ class vis(visitors.Visitor_Recursive):
 
         if tree.data == "lexp":
             if tree.children[0].value not in self.var_table and tree.children[0].type == "NAME":
-                self.var_table[tree.children[0].value] = "Added"
+                self.var_table[tree.children[0].value] = "Int"
             self.stack.append(tree.children[0].value)
 
     def typedecl(self, tree):
@@ -306,14 +299,21 @@ def main():
     #s = "i: Int = 42 + 3;"
     x = "j: Int = i - 32;"
     #x = "j: Int = i - 32;"
-
+    res = ""
+    try:
+        while (s):
+            s = input()
+            print(s)
+            res += s
+    except EOFError as e:
+        print(e)
     #print(calc(s))
     with open("tests/src/Testing.asm", "w") as fp:
         #print(calc_parser.parse(s).pretty())
         #print(calc_parser.parse(s))
         fp.write(".class Testing:Obj\n\n.method $constructor\n")
         #fp.write(calc(s) + "\n")
-        data = calc(s)
+        data = calc(res)
 
         y = data.find_data("lexp")
         for l_expression in y:

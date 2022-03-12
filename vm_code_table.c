@@ -1,7 +1,7 @@
 
 /**
  * GENERATED CODE, DO NOT EDIT
- * Generated 2022-01-31 23:55:18.757809 by build_bytecode_table.py
+ * Generated 2022-02-19 16:11:59.775473 by build_bytecode_table.py
  * 
  * Integer encoding of VM operations ---
  * Map those integer encodings to function pointers (for executing)
@@ -28,6 +28,7 @@ op_tbl_entry vm_op_bytecodes[] = {
 	 { "jump", vm_op_jump, 1 }, //14  Unconditional relative jump
 	 { "jump_if", vm_op_jump_if, 1 }, //15  Conditional relative jump, if true
 	 { "jump_ifnot", vm_op_jump_ifnot, 1 }, //16  Conditional relative jump, if false
+	 { "is_instance", vm_op_is_instance, 1 }, //17  Test membership in class (for typecase)
 
     { 0, 0, 0}  // SENTRY
 };

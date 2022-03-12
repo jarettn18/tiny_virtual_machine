@@ -1,14 +1,40 @@
-.class Testing:Obj
 
+.class Main:Obj
 .method $constructor
-.local x
-.local j
-const 12
+.locals idx, x, y
+const 10
+store idx
+
+            const 5
+load idx
+call Int:less
+jump_if then_1
+jump or_4
+or_4:
+const 5
+load idx
+call Int:equals
+jump_if then_1
+jump else_2
+then_1:
+const "If Hello"
 store x
-const 42
 load x
+call String:print
+
+            jump endif_3
+
+            else_2:
+const 5
+const 3
 call Int:plus
-store j
-load x
-call Added:print
+store y
+load y
+call Int:print
+
+            endif_3:
+        
+const nothing
 return 0
+
+

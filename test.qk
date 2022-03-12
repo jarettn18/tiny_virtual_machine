@@ -1,0 +1,8 @@
+idx = 10;
+if idx <= 5{
+        x = "If Hello";
+        x.print();
+} else {
+    y = 5 + 3;
+    y.print();
+}

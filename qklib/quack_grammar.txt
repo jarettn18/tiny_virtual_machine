@@ -1,0 +1,89 @@
+    ?start : program
+
+    ?program : classes methods stmt_block
+
+    classes : clazz*
+
+    clazz : "class" ident "(" formals* ")" ["extends" ident] "{" methods stmt_block "}"
+
+    methods : method*
+
+    method : "def" ident "(" formals* ")" [":" ident] "{" stmt_block "}"
+
+    ?stmt_block : statement*
+
+    formals: formal*
+
+    formal: ident ":" ident
+        | "," ident ":" ident
+
+    ?statement: r_exp ";"
+        | assignment ";"
+        | returns ";"
+        | if_stmt
+        | while_stmt
+
+    returns : "return" [r_exp]
+
+    assignment : l_exp [":" ident] "=" r_exp
+
+    if_stmt : "if" condition "{" stmt_block "}" [otherwise*]
+
+    otherwise : "elif" condition "{" stmt_block "}" [otherwise*] -> if_stmt
+        |"else" "{" stmt_block "}"  -> else_stmt
+
+    while_stmt : "while" condition "{" stmt_block "}"
+
+    ?condition : condition "and" logic_exp -> bool_and
+        | condition "or" logic_exp -> bool_or
+        | "not" logic_exp -> nots
+        | logic_exp
+
+    logic_exp : r_exp "<" r_exp -> less_than
+        | r_exp ">" r_exp -> greater_than
+        | r_exp "<=" r_exp -> less_equal
+        | r_exp ">=" r_exp -> greater_equal
+        | r_exp "==" r_exp -> equals
+
+    ?l_exp : ident  -> store
+        | r_exp "." ident   -> store_field
+
+    ?r_exp : calc
+        | ident "(" args* ")"   -> new
+        | r_exp "." ident "(" args* ")" ->method_call
+        | r_exp "." ident   -> load_field
+
+    args : r_exp
+        | "," r_exp
+
+    ?calc : product
+        | calc "+" product   -> plus
+        | calc "-" product   -> sub
+
+    ?product : atom
+        | product "*" atom  -> mult
+        | product "/" atom  -> div
+
+    ?atom : NUMBER           -> const
+        | "-" atom         -> neg
+        | "(" calc ")"
+        | "none"   -> lit_not
+        | bool
+        | ESCAPED_STRING -> strconst
+        | ident     -> load
+
+    ident : /[_a-zA-Z][_a-zA-Z0-9]*/
+
+    ?bool : "true" -> lit_true
+        |   "false" -> lit_false
+
+
+    %import common.C_COMMENT
+    %import common.CPP_COMMENT
+    %ignore C_COMMENT
+    %ignore CPP_COMMENT
+
+    %import common.ESCAPED_STRING
+    %import common.NUMBER
+    %import common.WS
+    %ignore WS
