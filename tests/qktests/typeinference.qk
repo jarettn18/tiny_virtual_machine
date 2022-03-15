@@ -1,0 +1,5 @@
+//Type inference
+
+x = "I'm a string";
+x = 5;
+x.print();

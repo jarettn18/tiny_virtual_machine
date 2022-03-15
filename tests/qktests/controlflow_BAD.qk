@@ -1,0 +1,11 @@
+//type inference does not apply to logical statements and will translate without complaint
+//I wasn't sure whether I should throw an error or assert the types here
+//The ASM code outputted calls String:less when it reaches the conditional statement
+
+x = "Hello";
+y = 3;
+
+if x < y {
+    z = "A string is less than an int?";
+    z.print();
+}

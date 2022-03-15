@@ -1,0 +1,9 @@
+//Additional Control flow test cases to show looping is possible
+
+iterator = 0;
+num_iterator = 10;
+
+while iterator < num_iterator {
+    iterator = iterator + 1;
+    iterator.print();
+}

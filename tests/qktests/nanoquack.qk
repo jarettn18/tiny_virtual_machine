@@ -1,0 +1,6 @@
+//Basic Example to show functionality of nano-quack
+
+x = 4 + 3;
+x.print();
+y = "Nora" + " Cat";
+y.print();

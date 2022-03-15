@@ -1,0 +1,11 @@
+//An example of control flow through logical conditions
+
+i = 1;
+j = 4;
+if i < 5 and j < 5 {
+    x = "If statement called";
+    x.print();
+} else {
+    y = "Else Statement Called";
+    y.print();
+}
